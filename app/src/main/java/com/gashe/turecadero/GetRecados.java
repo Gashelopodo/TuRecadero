@@ -35,7 +35,6 @@ public class GetRecados extends AsyncTask<Void, Void, String> {
         BufferedReader bufferedReader = null;
 
         try {
-
             url = new URL(URL_GET_RECADOS);
             http = (HttpURLConnection)url.openConnection();
             if(http.getResponseCode() == HttpURLConnection.HTTP_OK){
@@ -44,7 +43,6 @@ public class GetRecados extends AsyncTask<Void, Void, String> {
                 bufferedReader = new BufferedReader(inputStreamReader);
                 response = bufferedReader.readLine();
             }
-
         } catch (Throwable t) {
             Log.d(getClass().getCanonicalName(), "Error: " + t);
         }finally {
@@ -59,11 +57,12 @@ public class GetRecados extends AsyncTask<Void, Void, String> {
     protected void onPostExecute(String s) {
 
         Activity activity = (Activity) context;
-
-        Log.d(getClass().getCanonicalName(), "JSON: " + s );
+        MainActivity mainActivity = (MainActivity) context;
 
         Utils utils = new Utils();
         utils.hideLoader(activity);
+
+        mainActivity.getRecadosToString(s);
 
         super.onPostExecute(s);
     }

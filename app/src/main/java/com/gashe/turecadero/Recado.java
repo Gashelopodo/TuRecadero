@@ -12,15 +12,17 @@ public class Recado {
     private String nombre_cliente;
     private String telefono;
     private String direccion_recogida;
+    private String direccion_entrega;
     private String descripcion;
     private Date fecha_hora_maxima;
     private boolean realidazo;
 
-    public Recado(Date fecha_hora, String nombre_cliente, String telefono, String direccion_recogida, String descripcion, Date fecha_hora_maxima) {
+    public Recado(Date fecha_hora, String nombre_cliente, String telefono, String direccion_recogida, String direccion_entrega, String descripcion, Date fecha_hora_maxima) {
         this.fecha_hora = fecha_hora;
         this.nombre_cliente = nombre_cliente;
         this.telefono = telefono;
         this.direccion_recogida = direccion_recogida;
+        this.direccion_entrega = direccion_entrega;
         this.descripcion = descripcion;
         this.fecha_hora_maxima = fecha_hora_maxima;
     }
@@ -55,6 +57,14 @@ public class Recado {
 
     public void setDireccion_recogida(String direccion_recogida) {
         this.direccion_recogida = direccion_recogida;
+    }
+
+    public String getDireccion_entrega() {
+        return direccion_entrega;
+    }
+
+    public void setDireccion_entrega(String direccion_entrega) {
+        this.direccion_entrega = direccion_entrega;
     }
 
     public String getDescripcion() {
