@@ -28,7 +28,7 @@ public class ListRecadosAdapter extends RecyclerView.Adapter<ListRecadosViewHold
     public ListRecadosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ListRecadosViewHolder listRecadosViewHolder = null;
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.recado_row, parent, false);
+        View view = layoutInflater.inflate(R.layout.row_recado, parent, false);
         listRecadosViewHolder = new ListRecadosViewHolder(view);
         return listRecadosViewHolder;
     }

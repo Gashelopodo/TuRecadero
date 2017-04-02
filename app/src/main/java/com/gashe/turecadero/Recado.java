@@ -1,12 +1,13 @@
 package com.gashe.turecadero;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Gashe on 2/4/17.
  */
 
-public class Recado {
+public class Recado implements Serializable {
 
     private Date fecha_hora;
     private String nombre_cliente;

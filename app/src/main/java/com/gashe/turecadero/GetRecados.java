@@ -56,6 +56,8 @@ public class GetRecados extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPostExecute(String s) {
 
+        Log.d(getClass().getCanonicalName(), "JSON: " + s );
+
         Activity activity = (Activity) context;
         MainActivity mainActivity = (MainActivity) context;
 
