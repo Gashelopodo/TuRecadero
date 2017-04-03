@@ -1,4 +1,4 @@
-package com.gashe.turecadero;
+package com.gashe.turecadero.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.gashe.turecadero.listeners.ButtonListener;
+import com.gashe.turecadero.R;
+import com.gashe.turecadero.models.Recado;
+import com.gashe.turecadero.utils.Utils;
 
 import java.util.Calendar;
 
@@ -32,18 +35,19 @@ public class DetalleRecadoActivity extends AppCompatActivity {
 
 
         TextView clientName = (TextView)findViewById(R.id.clientName);
-        clientName.setText(recado.getNombre_cliente());
         TextView phoneClient = (TextView)findViewById(R.id.clientPhone);
-        phoneClient.setText(recado.getTelefono());
         TextView recogidaText = (TextView)findViewById(R.id.recogidaText);
-        recogidaText.setText(recado.getDireccion_recogida());
         TextView entregaText = (TextView)findViewById(R.id.entregaText);
-        entregaText.setText(recado.getDireccion_entrega());
         TextView horaRecogida = (TextView)findViewById(R.id.horaRecogida);
-        horaRecogida.setText(hour + ":" + minute);
         TextView horaEntrega = (TextView)findViewById(R.id.horaEntrega);
-        horaEntrega.setText(hour1 + ":" + minute1);
         TextView descriptionText = (TextView)findViewById(R.id.descriptionText);
+
+        clientName.setText(recado.getNombre_cliente());
+        phoneClient.setText(recado.getTelefono());
+        recogidaText.setText(recado.getDireccion_recogida());
+        entregaText.setText(recado.getDireccion_entrega());
+        horaRecogida.setText(hour + ":" + minute);
+        horaEntrega.setText(hour1 + ":" + minute1);
         descriptionText.setText(recado.getDescripcion());
 
         Button button = (Button)findViewById(R.id.buttonRealizado);

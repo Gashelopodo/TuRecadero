@@ -1,6 +1,7 @@
-package com.gashe.turecadero;
+package com.gashe.turecadero.utils;
 
-import java.text.ParseException;
+import com.gashe.turecadero.models.Recado;
+
 import java.util.Comparator;
 import java.util.Date;
 

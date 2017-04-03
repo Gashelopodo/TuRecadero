@@ -1,4 +1,4 @@
-package com.gashe.turecadero;
+package com.gashe.turecadero.models;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -16,7 +16,8 @@ public class Recado implements Serializable {
     private String direccion_entrega;
     private String descripcion;
     private Date fecha_hora_maxima;
-    private boolean realidazo;
+    private int position;
+    private boolean realizado;
 
     public Recado(Date fecha_hora, String nombre_cliente, String telefono, String direccion_recogida, String direccion_entrega, String descripcion, Date fecha_hora_maxima) {
         this.fecha_hora = fecha_hora;
@@ -84,11 +85,19 @@ public class Recado implements Serializable {
         this.fecha_hora_maxima = fecha_hora_maxima;
     }
 
-    public boolean isRealidazo() {
-        return realidazo;
+    public int getPosition() {
+        return position;
     }
 
-    public void setRealidazo(boolean realidazo) {
-        this.realidazo = realidazo;
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public boolean isRealizado() {
+        return realizado;
+    }
+
+    public void setRealizado(boolean realizado) {
+        this.realizado = realizado;
     }
 }

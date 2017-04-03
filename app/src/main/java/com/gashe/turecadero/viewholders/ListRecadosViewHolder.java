@@ -1,14 +1,18 @@
-package com.gashe.turecadero;
+package com.gashe.turecadero.viewholders;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.gashe.turecadero.listeners.ButtonListener;
+import com.gashe.turecadero.R;
+import com.gashe.turecadero.models.Recado;
+import com.gashe.turecadero.utils.Utils;
+
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Created by Gashe on 2/4/17.
@@ -47,8 +51,11 @@ public class ListRecadosViewHolder extends RecyclerView.ViewHolder {
 
         dayName.setText("" + days[calendar.get(Calendar.DAY_OF_WEEK)]);
         numDay.setText("" + calendar.get(Calendar.DATE));
-        hoursText.setText(hour + ":" + minute + " > " + hour1 + ":" + minute);
+        hoursText.setText(hour + ":" + minute + " > " + hour1 + ":" + minute1);
         descriptionText.setText("“"+recado.getDescripcion()+"”");
+
+        if(recado.isRealizado()) linearLayout.setBackgroundColor(Color.CYAN);
+
         linearLayout.setOnClickListener(new ButtonListener(context, recado));
 
     }
