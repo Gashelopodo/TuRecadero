@@ -1,15 +1,21 @@
 package com.gashe.turecadero.activities;
 
 import android.app.Activity;
+import android.app.Service;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.IBinder;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.gashe.turecadero.utils.CompareDate;
 import com.gashe.turecadero.http.GetRecados;
@@ -34,14 +40,22 @@ public class MainActivity extends AppCompatActivity {
 
         final SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
         boolean control = prefs.getBoolean("control", false);
+        Utils utils = new Utils();
 
         if(!control) {
             // Obtenemos el JSON de recados del usuario
-            GetRecados getRecados = new GetRecados(this);
-            getRecados.execute();
+            if(utils.hayInternet(this)) {
+                if(utils.hayWifi(this)) Log.d(getClass().getCanonicalName(), "Hay wifi");
+                GetRecados getRecados = new GetRecados(this);
+                getRecados.execute();
+            }else{
+
+                Log.d(getClass().getCanonicalName(), "Sin conexión a internet");
+                Toast.makeText(this, "No hay conexión", Toast.LENGTH_LONG).show();
+
+            }
         }else{
 
-            Utils utils = new Utils();
             utils.hideLoader((Activity) this);
 
             String json = prefs.getString("recados", "");
@@ -49,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 
     public void getRecadosToString(String jsonString){
 

@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -44,6 +46,26 @@ public class Utils {
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
 
+    }
+
+    public boolean hayInternet(Context context){
+        boolean bool = false;
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService((Context.CONNECTIVITY_SERVICE));
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        bool = (networkInfo != null && networkInfo.isConnected());
+
+        return bool;
+    }
+
+    public boolean hayWifi(Context context){
+        boolean bool = false;
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService((Context.CONNECTIVITY_SERVICE));
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        bool = (networkInfo != null && networkInfo.isConnected() && networkInfo.getType() == ConnectivityManager.TYPE_WIFI);
+
+        return bool;
     }
 
 }
